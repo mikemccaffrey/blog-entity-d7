@@ -22,6 +22,7 @@ function blog_entity_entity_info() {
         'id' => 'bid',
         'label' => 'title',
       ),
+      'uri callback' => 'entity_class_uri',
       'module' => 'blog_entity',
     ),
   );
@@ -33,6 +34,13 @@ function blog_entity_entity_info() {
  * Define a custom entity class.
  */
 class BlogEntity extends Entity {
+
+  /**
+   * Overrides defaultUri() to implement a custom default URI
+   */
+  protected function defaultUri() {
+    return array('path' => 'blog/' . $this->identifier());
+  }
 
 }
 
