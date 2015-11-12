@@ -14,8 +14,8 @@ function blog_entity_entity_info() {
       'label' => t('Blog Entity'),
       'plural label' => t('Blog Entities'),
       'description' => t('An entity type for creating blog posts'),
-      'entity class' => 'EntityClass',
-      'controller class' => 'EntityAPIController',
+      'entity class' => 'BlogEntity',
+      'controller class' => 'BlogEntityController',
       'base table' => 'blog_entity',
       'fieldable' => TRUE,
       'entity keys' => array(
@@ -26,4 +26,18 @@ function blog_entity_entity_info() {
   );
 
   return $return;
+}
+
+/**
+ * Define a custom entity class.
+ */
+class BlogEntity extends Entity {
+
+}
+
+/**
+ * Define a custom entity controller class.
+ */
+class BlogEntityController extends EntityAPIController {
+
 }
