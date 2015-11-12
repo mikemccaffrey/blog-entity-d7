@@ -20,6 +20,7 @@ function blog_entity_entity_info() {
       'fieldable' => TRUE,
       'entity keys' => array(
         'id' => 'bid',
+        'label' => 'title',
       ),
       'module' => 'blog_entity',
     ),
