@@ -1,0 +1,60 @@
+<?php
+
+/**
+ * @file
+ * Install functions for the blog_entity module.
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function blog_entity_schema() {
+  $schema['blog_entity'] = array(
+    'description' => 'Store the blog post entities',
+    'fields' => array(
+      'bid' => array(
+        'type' => 'serial',
+        'not null' => TRUE,
+        'description' => 'Primary Key: Unique blog post ID',
+      ),
+      'title' => array(
+        'description' => 'The title of the blog post',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'uid' => array(
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => FALSE,
+        'default' => NULL,
+        'description' => "The {users}.uid of the associated user.",
+      ),
+      'created' => array(
+        'description' => 'The Unix timestamp when the blog post was created.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'updated' => array(
+        'description' => 'The Unix timestamp when the blog post was updated.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+    ),
+    'indexes' => array(
+      'uid' => array('uid'),
+    ),
+    'foreign keys' => array(
+      'uid' => array(
+        'table' => 'users',
+        'columns' => array('uid' => 'uid')
+      ),
+    ),
+    'primary key' => array('bid'),
+  );
+
+  return $schema;
+}
