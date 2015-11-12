@@ -4,3 +4,26 @@
  * @file
  * Blog Entity Example module.
  */
+
+ /**
+ * Implements hook_entity_info().
+ */
+function blog_entity_entity_info() {
+  $return = array(
+    'blog_entity' => array(
+      'label' => t('Blog Entity'),
+      'plural label' => t('Blog Entities'),
+      'description' => t('An entity type for creating blog posts'),
+      'entity class' => 'EntityClass',
+      'controller class' => 'EntityAPIController',
+      'base table' => 'blog_entity',
+      'fieldable' => TRUE,
+      'entity keys' => array(
+        'id' => 'bid',
+      ),
+      'module' => 'blog_entity',
+    ),
+  );
+
+  return $return;
+}
