@@ -29,6 +29,7 @@ function blog_entity_form($form, &$form_state, $entity = NULL) {
       '#title' => t('Entity Properties'),
       '#collapsible' => TRUE,
       '#collapsed' => TRUE,
+      '#weight' => 10,
     );
 
     $form['properties']['uid'] = array(
