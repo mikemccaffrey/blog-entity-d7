@@ -58,3 +58,38 @@ function blog_entity_schema() {
 
   return $schema;
 }
+
+/**
+ * Implements hook_install().
+ */
+function blog_entity_install() {
+
+  // Create the field base for the blog entity body
+  $field = array(
+    'field_name' => 'blog_entity_body',
+    'type' => 'text_with_summary',
+    'entity_types' => array('blog_entity'),
+  );
+  $field = field_create_field($field);
+
+  // Now add the blog entity body field to the default bundle
+  $instance = array(
+      'field_name' => 'blog_entity_body',
+      'entity_type' => 'blog_entity',
+      'bundle' => 'blog_entity',
+      'label' => 'Body',
+      'widget' => array('type' => 'text_textarea_with_summary'),
+      'settings' => array('display_summary' => TRUE),
+      'display' => array(
+        'default' => array(
+          'label' => 'hidden',
+          'type' => 'text_default',
+        ),
+        'teaser' => array(
+          'label' => 'hidden',
+          'type' => 'text_summary_or_trimmed',
+        ),
+      ),
+    );
+    $instance = field_create_instance($instance);
+}

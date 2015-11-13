@@ -8,3 +8,4 @@ files[] = blog_entity.install
 files[] = includes/blog_entity.class.inc
 files[] = includes/blog_entity.admin_ui.inc
 dependencies[] = entity
+dependencies[] = text
