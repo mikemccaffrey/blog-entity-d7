@@ -12,7 +12,7 @@
 function blog_entity_form($form, &$form_state, $entity = NULL) {
   $form = array();
 
-  $form['username'] = array(
+  $form['title'] = array(
     '#title' => t('Title'),
     '#type' => 'textfield',
     '#default_value' => isset($entity->title) ? $entity->title : '',
