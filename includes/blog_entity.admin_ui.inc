@@ -50,6 +50,9 @@ function blog_entity_form($form, &$form_state, $entity = NULL) {
     );
   }
 
+  // Include the fields provided by the Field API
+  field_attach_form('blog_entity', $entity, $form, $form_state);
+
   $form['actions'] = array(
     '#type' => 'actions',
     'submit' => array(
