@@ -51,9 +51,8 @@ class BlogEntity extends Entity {
    * Overrides defaultUri() to implement a custom default URI
    */
   protected function defaultUri() {
-    return array('path' => 'blog/' . $this->identifier());
+    return array('path' => 'blog-entity/' . $this->identifier());
   }
-
 }
 
 /**
