@@ -17,7 +17,6 @@ function blog_entity_entity_info() {
       'entity class' => 'BlogEntity',
       'controller class' => 'BlogEntityController',
       'base table' => 'blog_entity',
-      'fieldable' => TRUE,
       'entity keys' => array(
         'id' => 'bid',
         'label' => 'title',
@@ -29,10 +28,45 @@ function blog_entity_entity_info() {
         'file' => 'includes/blog_entity.admin_ui.inc',
       ),
       'access callback' => 'blog_entity_access_callback',
+      'fieldable' => TRUE,
+      'bundles' => array(
+        'blog_entiy' => array(
+          'label' => 'Blog Entity',
+          'admin' => array(
+            'path' => 'admin/structure/blog-entity',
+            'access arguments' => array('administer site configuration'),
+          ),
+        ),
+      ),
     ),
   );
 
   return $return;
+}
+
+/**
+ * Implements hook_menu().
+ */
+function blog_entity_menu() {
+  $items = array();
+
+  // Create a stub page for configuring the blog entity
+  $items['admin/structure/blog-entity'] = array(
+    'title' => 'Blog Entity',
+    'access arguments' => array('administer site configuration'),
+    'page callback' => 'blog_entity_page_callback',
+    'type' => MENU_NORMAL_ITEM,
+  );
+
+  return $items;
+}
+
+/**
+ * Page callback referenced in blog_entity_menu that creates a stub page for the structure menu
+ */
+function blog_entity_page_callback() {
+  drupal_set_message("The blog entity only a single bundle right now.");
+  return "";
 }
 
 /**
