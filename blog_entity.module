@@ -33,7 +33,7 @@ function blog_entity_entity_info() {
       'access callback' => 'blog_entity_access_callback',
       'fieldable' => TRUE,
       'bundles' => array(
-        'blog_entiy' => array(
+        'blog_entity' => array(
           'label' => 'Blog Entity',
           'admin' => array(
             'path' => 'admin/structure/blog-entity',
