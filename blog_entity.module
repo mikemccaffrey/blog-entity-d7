@@ -24,10 +24,22 @@ function blog_entity_entity_info() {
       ),
       'uri callback' => 'entity_class_uri',
       'module' => 'blog_entity',
+      'admin ui' => array(
+        'path' => 'admin/content/blog-entity',
+        'file' => 'includes/blog_entity.admin_ui.inc',
+      ),
+      'access callback' => 'blog_entity_access_callback',
     ),
   );
 
   return $return;
+}
+
+/**
+ * Access callback set in blog_entity_entity_info
+ */
+function blog_entity_access_callback($op, $entity, $account, $entity_type) {
+    return TRUE;
 }
 
 /**
