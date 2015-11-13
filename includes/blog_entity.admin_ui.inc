@@ -66,11 +66,9 @@ function blog_entity_form($form, &$form_state, $entity = NULL) {
 function blog_entity_form_submit($form, &$form_state) {
   $blog_entity = entity_ui_form_submit_build_entity($form, $form_state);
 
-  // Set the uid, created, and updated times as needed
+  // Set the uid for the entity to the current user if one has not been previously set
   global $user;
-  $blog_entity->uid = empty($blog_entity->uid) ? $user->uid : $blog_entity->uid;
-  $blog_entity->created = empty($blog_entity->created) ? REQUEST_TIME : $blog_entity->created;
-  $blog_entity->updated = REQUEST_TIME;
+  $blog_entity->uid = isset($blog_entity->uid) ? $blog_entity->uid : $user->uid;
 
   $blog_entity->save();
   $form_state['redirect'] = 'admin/content/blog-entity';
