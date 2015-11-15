@@ -53,13 +53,18 @@ function blog_entity_entity_info() {
 function blog_entity_menu() {
   $items = array();
 
+  $items['blog-entity'] = array(
+    'title' => 'List of Blog Entities',
+    'page callback' => 'blog_entity_list_page',
+    'access callback' => 'blog_entity_access_callback',
+    'menu_name' => 'navigation',
+  );
+
   // Menu callback to show blog entity pages
   $items['blog-entity/%blog_entity'] = array(
-    'title' => 'Blog Entities',
     'page callback' => 'blog_entity_page',
     'page arguments' => array(1),
     'access callback' => 'blog_entity_access_callback',
-    'access arguments' => array('view', 1),
   );
 
   // Create a stub page for configuring the blog entity
@@ -67,7 +72,6 @@ function blog_entity_menu() {
     'title' => 'Blog Entity',
     'access arguments' => array('administer site configuration'),
     'page callback' => 'blog_entity_page_callback',
-    'type' => MENU_NORMAL_ITEM,
   );
 
   return $items;
@@ -84,7 +88,7 @@ function blog_entity_page_callback() {
 /**
  * Access callback set in blog_entity_entity_info
  */
-function blog_entity_access_callback($op, $entity, $account = NULL, $entity_type = NULL) {
+function blog_entity_access_callback($op = NULL, $entity = NULL, $account = NULL, $entity_type = NULL) {
     return TRUE; // Access control not needed since this is just a test and not inteded for production use
 }
 
@@ -101,4 +105,11 @@ function blog_entity_load($bid) {
 function blog_entity_page($blog_entity) {
   drupal_set_title($blog_entity->title);
   return $blog_entity->view();
+}
+
+/**
+ * Page callback to list blog entities
+ */
+function blog_entity_list_page() {
+  return "List of blog entities goes here";
 }
