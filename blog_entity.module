@@ -85,7 +85,7 @@ function blog_entity_page_callback() {
  * Access callback set in blog_entity_entity_info
  */
 function blog_entity_access_callback($op, $entity, $account = NULL, $entity_type = NULL) {
-    return TRUE;
+    return TRUE; // Access control not needed since this is just a test and not inteded for production use
 }
 
 /**
