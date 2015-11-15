@@ -53,6 +53,15 @@ function blog_entity_entity_info() {
 function blog_entity_menu() {
   $items = array();
 
+  // Menu callback to show blog entity pages
+  $items['blog-entity/%blog_entity'] = array(
+    'title' => 'Blog Entities',
+    'page callback' => 'blog_entity_page',
+    'page arguments' => array(1),
+    'access callback' => 'blog_entity_access_callback',
+    'access arguments' => array('view', 1),
+  );
+
   // Create a stub page for configuring the blog entity
   $items['admin/structure/blog-entity'] = array(
     'title' => 'Blog Entity',
@@ -75,6 +84,21 @@ function blog_entity_page_callback() {
 /**
  * Access callback set in blog_entity_entity_info
  */
-function blog_entity_access_callback($op, $entity, $account, $entity_type) {
+function blog_entity_access_callback($op, $entity, $account = NULL, $entity_type = NULL) {
     return TRUE;
+}
+
+/**
+ * Menu autoloader for blog entites.
+ */
+function blog_entity_load($bid) {
+  return entity_load_single('blog_entity', $bid);
+}
+
+/**
+ * Page callback to show blog entity pages
+ */
+function blog_entity_page($blog_entity) {
+  drupal_set_title($blog_entity->title);
+  return "Next we will need to assemble the content";
 }
