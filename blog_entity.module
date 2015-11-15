@@ -100,5 +100,5 @@ function blog_entity_load($bid) {
  */
 function blog_entity_page($blog_entity) {
   drupal_set_title($blog_entity->title);
-  return "Next we will need to assemble the content";
+  return $blog_entity->view();
 }
