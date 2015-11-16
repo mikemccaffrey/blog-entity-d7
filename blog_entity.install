@@ -92,4 +92,10 @@ function blog_entity_install() {
       ),
     );
     $instance = field_create_instance($instance);
+
+    // Add some links to the navigation menu for easy testing
+    $menu_item = array('link_path' => 'admin/content/blog-entity', 'link_title' => 'Manage blog entities', 'menu_name' => 'navigation', 'weight' => 5);
+    menu_link_save($menu_item);
+    $menu_item = array('link_path' => 'admin/structure/blog-entity', 'link_title' => 'Configure blog entity structure', 'menu_name' => 'navigation', 'weight' => 6);
+    menu_link_save($menu_item);
 }

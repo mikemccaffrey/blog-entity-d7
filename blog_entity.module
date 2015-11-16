@@ -87,7 +87,7 @@ function blog_entity_menu() {
  * Page callback referenced in blog_entity_menu that creates a stub page for the structure menu
  */
 function blog_entity_page_callback() {
-  drupal_set_message("The blog entity only supports a single bundle right now.");
+  drupal_set_message("The blog entity only supports a single bundle right now. Use the tabs above to manage its fields.");
   return "";
 }
 
