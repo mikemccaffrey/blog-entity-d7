@@ -41,6 +41,12 @@ function blog_entity_entity_info() {
           ),
         ),
       ),
+      'view modes' => array(
+        'teaser' => array(
+          'label' => t('Teaser'),
+          'custom settings' => TRUE,
+        ),
+      ),
     ),
   );
 
@@ -123,7 +129,7 @@ function blog_entity_list_page() {
 
   // Load, prepare, and render the blog entities
   $blog_entities = entity_load('blog_entity', array_keys($result['blog_entity']));
-  $blog_entity_views = entity_view('blog_entity', $blog_entities);
+  $blog_entity_views = entity_view('blog_entity', $blog_entities, 'teaser');
   return array(
     'content' => $blog_entity_views,
     'pager' => array(
