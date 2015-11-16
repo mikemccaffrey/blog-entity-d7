@@ -28,7 +28,7 @@ function blog_entity_form($form, &$form_state, $entity = NULL) {
       '#type' => 'fieldset',
       '#title' => t('Entity Properties'),
       '#collapsible' => TRUE,
-      '#collapsed' => TRUE,
+      '#collapsed' => FALSE,
       '#weight' => 10,
     );
 
