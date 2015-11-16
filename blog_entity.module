@@ -111,5 +111,17 @@ function blog_entity_page($blog_entity) {
  * Page callback to list blog entities
  */
 function blog_entity_list_page() {
-  return "List of blog entities goes here";
+
+  $query = new EntityFieldQuery;
+  $result = $query
+    ->entityCondition('entity_type', 'blog_entity')
+    ->propertyOrderBy('bid', 'DESC')
+    ->execute();
+
+  if(empty($result['blog_entity'])) return "There are currently no blog enities.";
+
+  // Load, prepare, and render the blog entities
+  $blog_entities = entity_load('blog_entity', array_keys($result['blog_entity']));
+  $blog_entity_views = entity_view('blog_entity', $blog_entities);
+  return render($blog_entity_views);
 }
